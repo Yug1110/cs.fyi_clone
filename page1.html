@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamically load IP address from EC2 in Ansible Inventory</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="page1.css">
+</head>
+<body>
+    <div class="whole_body">
+        <div class="navbar">
+            <div class="nav_icon">
+                <i class="fa-solid fa-computer"></i>
+            </div>
+            <div class="nav_options">
+                <a href="#">Home</a>
+                <a href="#">Explore</a>
+            </div>
+        </div>
+
+        <div class="nav-tagbar">
+            <div class="tag1 tag">
+                Ansible
+            </div>
+            <div class="tag2 tag">
+                Aws Web Services
+            </div>
+            <div class="tag3 tag">
+                DevOps
+            </div>
+        </div>
+
+        <div class="heading">
+            <h1>Load IP addresses for EC2 in Ansible Inventory</h1>
+            <p>September 6, 2023</p>
+        </div>
+
+        <div class="content">
+            <p>Ansible is a great tool for automating infrastructure provisioning. It is agentless, which means that you don’t need to install anything on the target machine. It is also very easy to use and has a lot of modules that you can use to automate your infrastructure.</p>
+            <p>Ansible inventory is a file that contains a list of hosts that Ansible can connect to. It is used to define the hosts that Ansible will connect to and the run the tasks on. This file can be either static i.e. you define the hosts manually or dynamic i.e. you define the hosts using a script. Given below is an example of a static inventory file.</p>
+
+            <div class="results">
+                <p>[web] <br>
+                    16.202.152.100 <br>
+                    14.201.142.105
+                </p>
+                <p>
+                    [db] <br>
+                    15.212.122.120
+
+                </p>
+            </div>
+
+            <p>As you can see, we have two groups <span>`[web]`</span> and <span>`[db]`</span> with each group having some IP addresses. The problem with this approach is that if you have a lot of hosts, then it becomes very difficult to manage the inventory file. Also, if you have a dynamic infrastructure where hosts are added and removed frequently, then it becomes even more difficult to manage the inventory file.</p>
+            <p>In this article, we will learn how to dynamically populate the Ansible inventory with the IP address of EC2 instances.</p>
+        </div>
+
+        <div class="heading">
+            <h1>Tagging EC2 instances</h1>
+        </div>
+
+        <div class="content">
+            <p>The first step to make it easier to manage the inventory file is to tag the EC2 instances properly. I normally tag the EC2 instances with the following tags at the very least:</p>
+            <div class="results">
+                <p>Project     = "web-address.com" <br>
+                    Component   = "{COMPONENT}" <br>
+                    Role        = "{ROLE}" <br>
+                    Name        = "{COMPONENT}-{ROLE}-{ENVIROMENT}" <br>
+                    Environment = "{ENVIRONMENT}" <br>
+                    ManagedBy   = "{MANAGED_BY}"</p> <br>
+            </div>
+            <p>Details of what each tag means:</p>
+            <ul>
+                <li><span class="li-heading">Component:</span> Name of the component if application consists of several different components e.g. <span class="hi">`newsletter`</span>, <span class="hi">`blog`</span>, <span class="hi">`app`</span>, etc.</li>
+                <li><span class="li-heading">Role:</span> Role of the EC2 instance e.g. <span class="hi">`api`</span> (backend API), <span class="hi">`web`</span> (customer facing app), <span class="hi">`db`</span> (database server), etc.</li>
+            </ul>
+            <p>Having these tags not only makes it easier to manage the inventory file but also makes it easier to manage the EC2 instances themselves e.g. you can easily find all the resources with specific tags, better analyse the cost of the infrastructure, etc.</p>
+        </div>
+
+        <div class="heading">
+            <h1>Conclusion</h1>
+        </div>
+        <div class="content">
+            <p>In this article, we learned how to dynamically populate the Ansible inventory with the IP address of EC2 instances. This makes it easier to manage the inventory file and also makes it easier to manage the EC2 instances themselves. I hope you found this article useful.</p>
+        </div>
+
+        <footer>
+            © All rights reserved — cs.fyi
+        </footer>
+
+    </div>
+
+    
+</body>
+</html>
